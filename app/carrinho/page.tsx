@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import {
   MapPin,
   Instagram,
@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-export default function CarrinhoPage() {
+function CarrinhoContent() {
   const searchParams = useSearchParams()
   const initialQuantity = Number(searchParams.get("quantidade") || 1)
 
@@ -420,5 +420,12 @@ export default function CarrinhoPage() {
         </div>
       </footer>
     </main>
+  )
+} 
+export default function CarrinhoPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <CarrinhoContent />
+    </Suspense>
   )
 }
