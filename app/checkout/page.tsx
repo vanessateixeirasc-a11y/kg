@@ -7,6 +7,7 @@ function CheckoutContent() {
   const searchParams = useSearchParams()
   const quantidade = Number(searchParams.get("quantidade") || 1)
   const [entregaSelecionada, setEntregaSelecionada] = useState(false)
+  const [copiado, setCopiado] = useState(false)
 
   const produto = 700 * quantidade
   const frete = 500
@@ -345,11 +346,22 @@ function CheckoutContent() {
                 />
 
                 <button
-                  onClick={() => navigator.clipboard.writeText(pix.copyPaste)}
-                  className="w-full h-[48px] bg-[#5979b9] text-white rounded-md font-bold"
-                >
-                  Copiar código PIX
-                </button>
+  onClick={() => {
+    navigator.clipboard.writeText(pix.copyPaste)
+    setCopiado(true)
+
+    setTimeout(() => {
+      setCopiado(false)
+    }, 2000)
+  }}
+  className={`w-full h-[48px] rounded-md font-bold transition-all duration-200 active:scale-95 ${
+  copiado
+    ? "bg-[#40639c] text-white scale-[0.98]"
+    : "bg-[#5979b9] text-white"
+}`}
+>
+  {copiado ? "Código copiado!" : "Copiar código PIX"}
+</button>
               </div>
             )}
           </div>
