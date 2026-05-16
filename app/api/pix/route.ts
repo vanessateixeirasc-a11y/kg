@@ -38,27 +38,35 @@ export async function POST(req: Request) {
     }
 
     const copyPaste =
-      data.copyPaste ||
-      data.pix_code ||
-      data.pixCode ||
-      data.qrcode ||
-      data.qrCode ||
-      data.payload ||
-      data.pix_payload ||
-      data.emv ||
-      data.brcode ||
-      data.brcodepix ||
-      data?.payment?.pix_code ||
-      data?.payment?.qrcode ||
-      data?.payment?.payload ||
-      null
+  data?.pix?.copy_paste ||
+  data?.pix?.qr_code ||
+  data.copyPaste ||
+  data.pix_code ||
+  data.pixCode ||
+  data.qrcode ||
+  data.qrCode ||
+  data.payload ||
+  data.pix_payload ||
+  data.emv ||
+  data.brcode ||
+  data.brcodepix ||
+  data?.payment?.pix_code ||
+  data?.payment?.qrcode ||
+  data?.payment?.payload ||
+  null
+
+const qrCodeImage =
+  data?.pix?.qr_code_image || null
 
     return NextResponse.json({
-      invoiceId: data.invoice_id,
-      shortCode: data.short_code,
-      copyPaste,
-      response: data,
-    })
+  invoiceId: data.invoice_id,
+  shortCode: data.short_code,
+  copyPaste,
+  qrCodeImage,
+  expiresAt: data?.pix?.expires_at || null,
+  status: data.status,
+  response: data,
+})
   } catch (error) {
     return NextResponse.json(
       {

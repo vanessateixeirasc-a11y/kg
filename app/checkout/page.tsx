@@ -328,12 +328,15 @@ function CheckoutContent() {
             {pix?.copyPaste && (
               <div className="mt-5 flex flex-col items-center gap-4">
                 <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
-                    pix.copyPaste
-                  )}`}
-                  alt="QR Code"
-                  className="w-[250px] h-[250px]"
-                />
+  src={
+    pix.qrCodeImage ||
+    `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
+      pix.copyPaste
+    )}`
+  }
+  alt="QR Code"
+  className="w-[250px] h-[250px]"
+/>
 
                 <textarea
                   readOnly
