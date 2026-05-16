@@ -91,7 +91,56 @@ function CheckoutContent() {
         Passo 2 de 2: Entrega e Pagamento
       </div>
 
+      
+
       <div className="max-w-md mx-auto p-2">
+        {/* DADOS PESSOAIS */}
+<div className="bg-white border rounded-md p-4 mb-4">
+
+  <h2 className="text-[22px] font-bold text-[#333]">
+  Dados Pessoais
+</h2>
+
+  <div className="border-b my-4" />
+
+  <div className="space-y-4">
+
+    <div>
+      <label className="text-sm">
+        E-mail
+      </label>
+
+      <input
+        type="email"
+        placeholder="Digite seu e-mail"
+        className="w-full border rounded-md h-11 px-3 mt-1"
+      />
+    </div>
+
+    <div>
+      <label className="text-sm">
+        CPF
+      </label>
+
+      <input
+        placeholder="000.000.000-00"
+        className="w-full border rounded-md h-11 px-3 mt-1"
+      />
+    </div>
+
+    <div>
+      <label className="text-sm">
+        Data de nascimento
+      </label>
+
+      <input
+        type="date"
+        className="w-full border rounded-md h-11 px-3 mt-1"
+      />
+    </div>
+
+  </div>
+</div>
         <div className="bg-white border rounded-md p-4">
           <h2 className="text-[22px] font-bold text-[#333]">Novo endereço</h2>
 
@@ -127,7 +176,7 @@ function CheckoutContent() {
             <div>
               <label className="text-sm">CEP</label>
               <input
-                value={cep}
+                value={cep || ""}
                 onChange={(e) => buscarCep(e.target.value)}
                 className="w-full border rounded-md h-11 px-3 mt-1"
                 placeholder="Digite seu CEP"
@@ -147,7 +196,7 @@ function CheckoutContent() {
             <div>
               <label className="text-sm">Logradouro</label>
               <input
-                value={logradouro}
+                value={logradouro || ""}
                 onChange={(e) => setLogradouro(e.target.value)}
                 className="w-full border rounded-md h-11 px-3 mt-1"
               />
@@ -176,7 +225,7 @@ function CheckoutContent() {
             <div>
               <label className="text-sm">Bairro</label>
               <input
-                value={bairro}
+                value={bairro || ""}
                 onChange={(e) => setBairro(e.target.value)}
                 className="w-full border rounded-md h-11 px-3 mt-1"
               />
@@ -186,7 +235,7 @@ function CheckoutContent() {
               <div>
                 <label className="text-sm">Município</label>
                 <input
-                  value={municipio}
+                  value={municipio || ""}
                   onChange={(e) => setMunicipio(e.target.value)}
                   className="w-full border rounded-md h-11 px-3 mt-1"
                 />
@@ -195,7 +244,7 @@ function CheckoutContent() {
               <div>
                 <label className="text-sm">UF</label>
                 <input
-                  value={uf}
+                  value={uf || ""}
                   onChange={(e) => setUf(e.target.value)}
                   className="w-full border rounded-md h-11 px-3 mt-1"
                 />
@@ -265,7 +314,7 @@ function CheckoutContent() {
 
             <p className="text-[23px] font-bold text-[#5979b9] mt-5">
               R$ {(total / 100).toFixed(2).replace(".", ",")}
-              <span className="text-[22px]"> à vista</span>
+              <span className="text-[20px]"> à vista</span>
             </p>
 
             <button
