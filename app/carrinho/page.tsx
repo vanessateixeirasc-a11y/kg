@@ -326,7 +326,9 @@ function CarrinhoContent() {
           </div>
 
           <Button
-            onClick={finalizarCompra}
+            onClick={() => {
+  window.location.href = `/checkout?quantidade=${quantity}`
+}}
             disabled={loading}
             className="w-full mt-4 bg-[#3c72b4] hover:bg-[#335f96] text-white font-bold text-xl h-[46px]"
           >
