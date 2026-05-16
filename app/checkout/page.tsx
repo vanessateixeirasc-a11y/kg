@@ -9,7 +9,7 @@ function CheckoutContent() {
   const [entregaSelecionada, setEntregaSelecionada] = useState(false)
 
   const produto = 700 * quantidade
-  const frete = 708
+  const frete = 500
   const total = produto + frete
 
   const [loading, setLoading] = useState(false)
